@@ -1,0 +1,4 @@
+#!/bin/sh
+#
+
+/home/matt/code/gumstix-buildroot-1444/build_arm_nofpu/staging_dir/bin/arm-linux-uclibcgnueabi-gcc -Wall -D_GNU_SOURCE -o mapad-gumstix *.c -lpthread
