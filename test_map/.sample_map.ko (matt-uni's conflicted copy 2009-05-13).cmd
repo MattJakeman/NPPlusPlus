@@ -1,1 +1,0 @@
-cmd_/home/matt/Dropbox/phd_stuff/code/np-mod/test_map/sample_map.ko := ld -r -m elf_i386  --build-id -o /home/matt/Dropbox/phd_stuff/code/np-mod/test_map/sample_map.ko /home/matt/Dropbox/phd_stuff/code/np-mod/test_map/sample_map.o /home/matt/Dropbox/phd_stuff/code/np-mod/test_map/sample_map.mod.o
