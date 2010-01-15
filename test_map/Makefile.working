@@ -1,0 +1,29 @@
+obj-m := sample_map.o
+#sample_map-objs := sample_map.o
+
+#TARGET = sample_map
+#CURRENT = $(shell uname -r)
+#DEST = /lib/modules/$(CURRENT)/kernel/$(MDIR)
+
+ifeq ($(KERNELRELEASE),)
+
+GUMSTIX_BUILDROOT   = /home/matt/code/gumstix-buildroot-1444
+BUILD_ARM           = $(wildcard $(GUMSTIX_BUILDROOT)/build_arm*)
+KERNELDIR          ?= $(wildcard $(BUILD_ARM)/linux-*)
+CROSS_COMPILE       = $(BUILD_ARM)/staging_dir/bin/arm-linux-uclibcgnueabi-
+TARGET_ARCH=-Os -march=armv5te -mtune=xscale -Wa,-mcpu=xscale
+CC = $(CROSS_COMPILE)gcc
+PWD       := $(shell pwd)
+
+endif
+
+default: all
+
+all:
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
+
+clean:
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
+
+gumstix:
+	$(MAKE) -C $(KERNELDIR) M=$(PWD) ARCH=arm CROSS_COMPILE=$(CROSS_COMPILE) modules

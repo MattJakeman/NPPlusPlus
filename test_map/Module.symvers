@@ -1,0 +1,3 @@
+0x00000000	np_mapping_add	/home/matt/Dropbox/phd_stuff/code/np-mod/np++-openwrt	EXPORT_SYMBOL
+0x00000000	np_mapping_del	/home/matt/Dropbox/phd_stuff/code/np-mod/np++-openwrt	EXPORT_SYMBOL
+0x00000000	np_phys_sw	/home/matt/Dropbox/phd_stuff/code/np-mod/np++-openwrt	EXPORT_SYMBOL

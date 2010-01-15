@@ -1,0 +1,1 @@
+cmd_/home/matt/Dropbox/phd_stuff/code/np-mod/np++.ko := ld -r -m elf_x86_64  --build-id -o /home/matt/Dropbox/phd_stuff/code/np-mod/np++.ko /home/matt/Dropbox/phd_stuff/code/np-mod/np++.o /home/matt/Dropbox/phd_stuff/code/np-mod/np++.mod.o
