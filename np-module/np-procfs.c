@@ -31,7 +31,7 @@ int np_procfs_init(void)
 	INIT_LIST_HEAD(&ifcm_pdes.npil);
 
 if(conf.debug_on == 1)
-	printk(KERN_INFO "Initialising NP++ sysfs entries\n");
+	printk(KERN_INFO "Initialising NP++ proc file system entries\n");
 
 #if LINUX_VERSION_CODE > KERNEL_VERSION(2,6,23)
 	np_pde = proc_mkdir("np++", init_net.proc_net);
