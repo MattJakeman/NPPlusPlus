@@ -367,7 +367,7 @@ Copyright (C) 2008 Free Software Foundation, Inc.
 This config.status script is free software; the Free Software Foundation
 gives unlimited permission to copy, distribute and modify it."
 
-ac_pwd='/home/matt/code/radvd-np'
+ac_pwd='/home/matt/Dropbox/phd_stuff/code/np-svn/npplusplus/radvd-np'
 srcdir='.'
 INSTALL='/usr/bin/install -c'
 AWK='gawk'
@@ -575,19 +575,19 @@ S["CFLAGS"]="-g -O2"
 S["CC"]="gcc"
 S["am__untar"]="${AMTAR} xf -"
 S["am__tar"]="${AMTAR} chof - \"$$tardir\""
-S["AMTAR"]="${SHELL} /home/matt/code/radvd-np/missing --run tar"
+S["AMTAR"]="${SHELL} /home/matt/Dropbox/phd_stuff/code/np-svn/npplusplus/radvd-np/missing --run tar"
 S["am__leading_dot"]="."
 S["SET_MAKE"]=""
 S["AWK"]="gawk"
 S["mkdir_p"]="mkdir -p --"
 S["INSTALL_STRIP_PROGRAM"]="${SHELL} $(install_sh) -c -s"
 S["STRIP"]=""
-S["install_sh"]="/home/matt/code/radvd-np/install-sh"
-S["MAKEINFO"]="${SHELL} /home/matt/code/radvd-np/missing --run makeinfo"
-S["AUTOHEADER"]="${SHELL} /home/matt/code/radvd-np/missing --run autoheader"
-S["AUTOMAKE"]="${SHELL} /home/matt/code/radvd-np/missing --run automake-1.9"
-S["AUTOCONF"]="${SHELL} /home/matt/code/radvd-np/missing --run autoconf"
-S["ACLOCAL"]="${SHELL} /home/matt/code/radvd-np/missing --run aclocal-1.9"
+S["install_sh"]="/home/matt/Dropbox/phd_stuff/code/np-svn/npplusplus/radvd-np/install-sh"
+S["MAKEINFO"]="${SHELL} /home/matt/Dropbox/phd_stuff/code/np-svn/npplusplus/radvd-np/missing --run makeinfo"
+S["AUTOHEADER"]="${SHELL} /home/matt/Dropbox/phd_stuff/code/np-svn/npplusplus/radvd-np/missing --run autoheader"
+S["AUTOMAKE"]="${SHELL} /home/matt/Dropbox/phd_stuff/code/np-svn/npplusplus/radvd-np/missing --run automake-1.9"
+S["AUTOCONF"]="${SHELL} /home/matt/Dropbox/phd_stuff/code/np-svn/npplusplus/radvd-np/missing --run autoconf"
+S["ACLOCAL"]="${SHELL} /home/matt/Dropbox/phd_stuff/code/np-svn/npplusplus/radvd-np/missing --run aclocal-1.9"
 S["VERSION"]="1.1"
 S["PACKAGE"]="radvd"
 S["CYGPATH_W"]="echo"

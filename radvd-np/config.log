@@ -134,12 +134,12 @@ configure:3924: checking lex output file root
 configure:3940: result: lex.yy
 configure:3945: checking lex library
 configure:3964: gcc -o conftest -g -O2   conftest.c   >&5
-/tmp/ccyfVLL6.o: In function `input':
-/home/matt/code/radvd-np/lex.yy.c:1182: undefined reference to `yywrap'
-/tmp/ccyfVLL6.o: In function `yylex':
-/home/matt/code/radvd-np/lex.yy.c:881: undefined reference to `yywrap'
-/tmp/ccyfVLL6.o: In function `main':
-/home/matt/code/radvd-np/conftest.l:17: undefined reference to `yywrap'
+/tmp/ccokMjxV.o: In function `input':
+/home/matt/Dropbox/phd_stuff/code/np-svn/npplusplus/radvd-np/lex.yy.c:1182: undefined reference to `yywrap'
+/tmp/ccokMjxV.o: In function `yylex':
+/home/matt/Dropbox/phd_stuff/code/np-svn/npplusplus/radvd-np/lex.yy.c:881: undefined reference to `yywrap'
+/tmp/ccokMjxV.o: In function `main':
+/home/matt/Dropbox/phd_stuff/code/np-svn/npplusplus/radvd-np/conftest.l:17: undefined reference to `yywrap'
 collect2: ld returned 1 exit status
 configure:3971: $? = 1
 configure: failed program was:
@@ -2713,14 +2713,14 @@ am_cv_CC_dependencies_compiler_type=gcc3
 ## Output variables. ##
 ## ----------------- ##
 
-ACLOCAL='${SHELL} /home/matt/code/radvd-np/missing --run aclocal-1.9'
+ACLOCAL='${SHELL} /home/matt/Dropbox/phd_stuff/code/np-svn/npplusplus/radvd-np/missing --run aclocal-1.9'
 AMDEPBACKSLASH='\'
 AMDEP_FALSE='#'
 AMDEP_TRUE=''
-AMTAR='${SHELL} /home/matt/code/radvd-np/missing --run tar'
-AUTOCONF='${SHELL} /home/matt/code/radvd-np/missing --run autoconf'
-AUTOHEADER='${SHELL} /home/matt/code/radvd-np/missing --run autoheader'
-AUTOMAKE='${SHELL} /home/matt/code/radvd-np/missing --run automake-1.9'
+AMTAR='${SHELL} /home/matt/Dropbox/phd_stuff/code/np-svn/npplusplus/radvd-np/missing --run tar'
+AUTOCONF='${SHELL} /home/matt/Dropbox/phd_stuff/code/np-svn/npplusplus/radvd-np/missing --run autoconf'
+AUTOHEADER='${SHELL} /home/matt/Dropbox/phd_stuff/code/np-svn/npplusplus/radvd-np/missing --run autoheader'
+AUTOMAKE='${SHELL} /home/matt/Dropbox/phd_stuff/code/np-svn/npplusplus/radvd-np/missing --run automake-1.9'
 AWK='gawk'
 CC='gcc'
 CCDEPMODE='depmode=gcc3'
@@ -2750,7 +2750,7 @@ LIBS='-lc '
 LN='/bin/ln'
 LOG_FACILITY='LOG_DAEMON'
 LTLIBOBJS=''
-MAKEINFO='${SHELL} /home/matt/code/radvd-np/missing --run makeinfo'
+MAKEINFO='${SHELL} /home/matt/Dropbox/phd_stuff/code/np-svn/npplusplus/radvd-np/missing --run makeinfo'
 OBJEXT='o'
 PACKAGE='radvd'
 PACKAGE_BUGREPORT=''
@@ -2798,7 +2798,7 @@ host_vendor='pc'
 htmldir='${docdir}'
 includedir='${prefix}/include'
 infodir='${datarootdir}/info'
-install_sh='/home/matt/code/radvd-np/install-sh'
+install_sh='/home/matt/Dropbox/phd_stuff/code/np-svn/npplusplus/radvd-np/install-sh'
 libdir='${exec_prefix}/lib'
 libexecdir='${exec_prefix}/libexec'
 localedir='${datarootdir}/locale'
