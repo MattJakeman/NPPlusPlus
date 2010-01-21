@@ -41,10 +41,18 @@ void cleanup_module(void)
 
 int sample_input(struct sk_buff **skb, const struct net_device *netd)
 {
+	/*
+	* This is where the packet enters the system.
+	* Add code here to return the packet to the Logical Spec
+	*/
     return 0;
 }
 
 struct sk_buff *sample_output(const struct net_device *netd, struct sk_buff *skb)
 {
+	/*
+	* This is where the packet exits the system
+	* Do whatever you want to the packet here (stored in skb)
+	*/
     return skb;
 }
