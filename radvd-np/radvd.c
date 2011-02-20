@@ -801,108 +801,97 @@ ssize_t icmp6_recv(int sockfd, unsigned char *msg, size_t msglen,
 
 void na_recv(const struct icmp6_hdr *ih, ssize_t len, const struct in6_addr *saddr, const struct in6_addr *daddr, int iif, int hoplimit, int sock_fd)
 {
-    if(ih->icmp6_type == ND_NEIGHBOR_ADVERT)
+	if(ih->icmp6_type == ND_NEIGHBOR_ADVERT)
 	{
-        struct nd_neighbor_advert *na = (struct nd_neighbor_advert *)ih;
-        int optlen = len - sizeof(struct nd_neighbor_advert);
-        uint8_t *opt = (uint8_t *)(na + 1);
+		struct nd_neighbor_advert *na = (struct nd_neighbor_advert *)ih;
+		int optlen = len - sizeof(struct nd_neighbor_advert);
+		uint8_t *opt = (uint8_t *)(na + 1);
 		struct Interface *iface;
 		uint8_t mapping = 0;
 		char *proc_cat_s = malloc(MAX_PROC_STR_SIZE + 1);
-        uint8_t np_fin_recvd = 0;
-        uint8_t source_ll_addr_recvd = 0;
+		uint8_t np_fin_recvd = 0;
+		uint8_t source_ll_addr_recvd = 0;
 		unsigned char *mac;
 		char hw_addr[MAX_HWADDR_STR_LEN];
 		uint8_t mac_count;
 		char temp_str[4];
-
+		
 		printf("NA Received\n");
-
+		
 		while (optlen > 1)
-        {
-            int olen = opt[1] << 3;
-
-            if (olen > optlen || olen == 0)
-                return;
-
-            switch (opt[0])
-            {
-/*
-                case 63:
-                {
-					uint8_t mapping = opt[2];
-					char *proc_cat_s = malloc(MAX_PROC_STR_SIZE + 1);
-
-					printf("NA Received Finalising The Mapping %d - Setting the /proc/ entry\n", mapping);
-#ifdef __linux__
-                    snprintf(proc_cat_s, MAX_PROC_STR_SIZE + 1, "echo %d > /proc/net/np++/ifcurmappings/%s", mapping, conf.interface);
-                    system(proc_cat_s);
-#endif
-					free(proc_cat_s);
-					break;
-				}
-*/
-				case 1: // Source Link Layer Address
+		{
+			int olen = opt[1] << 3;
+			if (olen > optlen || olen == 0)
+				return;
+			switch (opt[0])
+			{
+				
+			  case 1: // Source Link Layer Address
 				{
 					source_ll_addr_recvd = 1;
 					mac = opt + 2;
 					printf("MAC From Source Link Layer Option == %.2x:%.2x:%.2x:%.2x:%.2x:%.2x\n",
-                                (unsigned char)mac[0],
-                                (unsigned char)mac[1],
-                                (unsigned char)mac[2],
-                                (unsigned char)mac[3],
-                                (unsigned char)mac[4],
-                                (unsigned char)mac[5]);
+								 (unsigned char)mac[0],
+								 (unsigned char)mac[1],
+								 (unsigned char)mac[2],
+								 (unsigned char)mac[3],
+								 (unsigned char)mac[4],
+								 (unsigned char)mac[5]);
 					break;
 				}
-				case 63:
+			  case 63:
 				{
 					mapping = opt[2];
 					printf("New Mapping == %d\n", mapping);
 					np_fin_recvd = 1;
-                    break;
+					break;
 				}
 			}
 			optlen -= olen;
-            opt += olen;
+			opt += olen;
 		}
 		/*
-         * XXX : Get Source LL Addr Here
-         */
-//         for(iface=IfaceList; iface; iface=iface->next)
-//         {
-         	/*
-             * Addresses match so set the mapping in proc on this address
-             */
-//          if(memcmp(&iface->if_addr, &daddr, sizeof(struct in6_addr)) == 0)
-//            if(iif == iface->if_index)
-//            {
+		 * XXX : Get Source LL Addr Here
+		 */
+		//         for(iface=IfaceList; iface; iface=iface->next)
+		//         {
+		/*
+		 * Addresses match so set the mapping in proc on this address
+		 */
+		//          if(memcmp(&iface->if_addr, &daddr, sizeof(struct in6_addr)) == 0)
+		//            if(iif == iface->if_index)
+		//            {
 
-		memset(&hw_addr, 0, MAX_HWADDR_STR_LEN);
-
-		for(mac_count = 0; mac_count < 6; mac_count++)
+		if(np_fin_recvd == 1)
 		{
-			if(mac_count < (5))
+			memset(&hw_addr, 0, MAX_HWADDR_STR_LEN);
+			
+			for(mac_count = 0; mac_count < 6; mac_count++)
 			{
-				snprintf(temp_str, 4, "%.2x:", mac[mac_count]);
-				strncat(hw_addr, temp_str, strlen(temp_str));
-			}
-			else
-			{
-				snprintf(temp_str, 3, "%.2x", mac[mac_count]);
-				strncat(hw_addr, temp_str, strlen(temp_str));
+				if(mac_count < (5))
+				{
+					snprintf(temp_str, 4, "%.2x:", mac[mac_count]);
+					strncat(hw_addr, temp_str, strlen(temp_str));
+				}
+				else
+				{
+					snprintf(temp_str, 3, "%.2x", mac[mac_count]);
+					strncat(hw_addr, temp_str, strlen(temp_str));
+				}
 			}
 		}
 
 		printf("Source MAC Converted To String == %s\n", hw_addr);
 
 #ifdef __linux__
-//       	snprintf(proc_cat_s, MAX_PROC_STR_SIZE + 1, "echo %d > /proc/net/np++/maccurmappings/%s", mapping, iface->Name);
-       	snprintf(proc_cat_s, MAX_PROC_STR_SIZE + 1, "echo %d > /proc/net/np++/maccurmappings/%s", mapping, hw_addr);
-        system(proc_cat_s);
+		if(np_fin_recvd == 1)
+		{
+			snprintf(proc_cat_s, MAX_PROC_STR_SIZE + 1, "echo %d > /proc/net/np++/maccurmappings/%s", mapping, hw_addr);
+			system(proc_cat_s);
+		}
 #endif
-//            }
-//        }
+		//            }
+		//        }
 	}
 }
 
